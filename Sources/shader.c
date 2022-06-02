@@ -31,12 +31,20 @@ static void *allocate(size_t size) {
 	return &heap[old_top];
 }
 
+static bool first_update = true;
+
 static void update(void) {
 	currentBuffer = (currentBuffer + 1) % BUFFER_COUNT;
 
 	kinc_g5_begin(&framebuffers[currentBuffer], 0);
 
 	kinc_g5_command_list_begin(&commandList);
+
+	if (first_update) {
+		kinc_g5_command_list_upload_vertex_buffer(&commandList, &vertices);
+		kinc_g5_command_list_upload_index_buffer(&commandList, &indices);
+	}
+
 	kinc_g5_command_list_render_target_to_framebuffer_barrier(&commandList, &framebuffers[currentBuffer]);
 
 	kinc_g5_render_target_t *p_framebuffer = &framebuffers[currentBuffer];
