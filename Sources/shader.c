@@ -62,6 +62,8 @@ static void update(void) {
 	kinc_g5_command_list_render_target_to_framebuffer_barrier(&commandList, &framebuffers[currentBuffer]);
 	kinc_g5_command_list_end(&commandList);
 
+	kinc_g5_command_list_execute(&commandList);
+
 	kinc_g5_end(0);
 	kinc_g5_swap_buffers();
 }
