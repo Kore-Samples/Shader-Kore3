@@ -45,7 +45,7 @@ static void update(void) {
 		kinc_g5_command_list_upload_index_buffer(&commandList, &indices);
 	}
 
-	kinc_g5_command_list_render_target_to_framebuffer_barrier(&commandList, &framebuffers[currentBuffer]);
+	kinc_g5_command_list_framebuffer_to_render_target_barrier(&commandList, &framebuffers[currentBuffer]);
 
 	kinc_g5_render_target_t *p_framebuffer = &framebuffers[currentBuffer];
 	kinc_g5_command_list_set_render_targets(&commandList, &p_framebuffer, 1);
