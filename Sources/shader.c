@@ -14,7 +14,7 @@ static vertex_in_buffer vertices;
 static kope_g5_buffer indices;
 
 static void update(void *data) {
-	kope_g5_texture *framebuffer = kope_g5_device_get_framebuffer_texture(&device);
+	kope_g5_texture *framebuffer = kope_g5_device_get_framebuffer(&device);
 
 	kope_g5_render_pass_parameters parameters = {0};
 	parameters.color_attachments[0].load_op = KOPE_G5_LOAD_OP_CLEAR;
@@ -39,7 +39,7 @@ static void update(void *data) {
 
 	kope_g5_command_list_present(&list);
 
-	kope_g5_device_submit_command_list(&device, &list);
+	kope_g5_device_execute_command_list(&device, &list);
 }
 
 int kickstart(int argc, char **argv) {
