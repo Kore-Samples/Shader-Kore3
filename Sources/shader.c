@@ -114,6 +114,8 @@ int kickstart(int argc, char **argv) {
 	kope_g5_device_wishlist wishlist = {0};
 	kope_g5_device_create(&device, &wishlist);
 
+	kong_init(&device);
+
 	kope_g5_device_create_command_list(&device, &list);
 
 	/*heap = (uint8_t *)malloc(HEAP_SIZE);
