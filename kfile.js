@@ -1,10 +1,10 @@
-const project = new Project('ShaderTest');
+const project = new Project('Shader-Kore3');
 
-await project.addProject('Kinc', {kong: true, kope: true});
+await project.addProject(findKore());
 
-project.addFile('Sources/**');
-project.addKongDir('Shaders');
-project.setDebugDir('Deployment');
+project.addFile('sources/**');
+project.addKongDir('shaders');
+project.setDebugDir('deployment');
 
 project.flatten();
 
